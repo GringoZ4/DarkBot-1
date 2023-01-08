@@ -118,6 +118,7 @@ public class Config implements eu.darkbot.api.config.legacy.Config {
             public @Option boolean SEQUENTIAL = false;
             public @Option boolean ONLY_KILL_PREFERRED = false;
             public @Option boolean ENEMY_CBS_INVISIBLE = false;
+            
         }
     }
 
@@ -172,6 +173,10 @@ public class Config implements eu.darkbot.api.config.legacy.Config {
     public static class PetSettings {
         public @Option boolean ENABLED = false;
         public @Option @Dropdown(options = PetGears.class) PetGear MODULE_ID = PetGear.PASSIVE;
+        public @Option boolean petrepair = true;
+        public @Option @Percentage double repair_porcentaje_hp= 0.8;
+        public @Option boolean vinculoh = true;
+        public @Option @Percentage double vinculo_porcentaje_hp= 0.6;
     }
 
     public @Option GroupSettings GROUP = new GroupSettings();

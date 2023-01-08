@@ -156,6 +156,31 @@ public class PetManager extends Gui implements PetAPI {
         }
         if (submoduleId == -1) selectedNpc = null;
 
+        //repair pet
+    	if(this.main.config.PET.vinculoh) {
+    		
+    		if(this.main.hero.getHealth().hpPercent()<this.main.config.PET.vinculo_porcentaje_hp&&(main.hero.pet.health.hpPercent()>this.main.config.PET.repair_porcentaje_hp)) {
+    			moduleId=PetGear.HP_LINK.getId();
+    			System.out.print("PetManaer HP Link"+moduleId);
+    		}else {
+    		    if(this.main.config.PET.petrepair) {
+    	        	
+    	        	if((main.hero.pet.health.hpPercent()<this.main.config.PET.repair_porcentaje_hp)) {
+    	        		
+    	        		moduleId=PetGear.REPAIR.getId();
+    	       }else
+    	       {
+    	    	  // System.out.print("PetManaer Repair Pet true+Porcentaje vida pet: "+main.hero.pet.health.hpPercent());
+       			moduleId = gearSupplier.get().getId(); 
+    	       }
+    	        	
+    	        }else {
+    	        	// System.out.print("PetManaer Repair modulo: "+gearSupplier.get().getName());
+    	    			moduleId = gearSupplier.get().getId();
+    	        }
+    		   
+    		}
+    	}
         if (selection != ModuleStatus.SELECTED
                 || (currentModule != null && currentModule.id != moduleId)
                 || (currentSubModule == null && submoduleIdx != -1)
